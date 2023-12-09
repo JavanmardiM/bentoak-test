@@ -12,14 +12,13 @@ import { storage } from "../../utilities/storage";
 import { useForm } from "react-hook-form";
 
 const Login = () => {
-  let isLoading = false;
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
     mode: "onChange",
   });
@@ -112,7 +111,7 @@ const Login = () => {
                 variant="contained"
                 sx={{ mt: 3, mb: 2, maxHeight: 36 }}
               >
-                {isLoading ? (
+                {isSubmitting ? (
                   <Grid container justifyContent="center" alignItems="center">
                     <Box
                       sx={{ mr: 2 }}
